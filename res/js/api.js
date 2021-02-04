@@ -123,11 +123,7 @@ function do_auth() {
 		if (data.auth_status) {
 			
 			update_cookie(data.auth_cookie);
-			
-			$('.auth-container').hide();
-			$('.pdns-container').show();
-			refresh_zones();
-
+			location.reload();
 			
 		} else {
 			

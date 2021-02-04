@@ -5,11 +5,11 @@
 define('URL_PREFIX', '/pdns/api2');							
 
 
-## periodical checks
+## periodical checks (in seconds)
 define('AUTH_INTERVAL', 300);														
 
 
-## when the auth will expire (if not renewed) => 3x AUTH_INTERVAL
+## when the auth will expire (if not renewed) => 3x AUTH_INTERVAL (in seconds)
 define('AUTH_LIFE', 900);																
 
 
