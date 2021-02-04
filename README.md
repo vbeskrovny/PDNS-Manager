@@ -23,7 +23,7 @@ Lightweight PowerDNS management frontend
 - [ ] PDNS_Helper -> prepare() -> array 
 - [ ] Minify everything
 
-
+- - - -
 
 ### High level logic overview
 ![High level logic overview](https://raw.githubusercontent.com/vbeskrovny/PDNS-Manager/main/PDNS_Manager_HL_Overview.png)
@@ -37,6 +37,7 @@ Lightweight PowerDNS management frontend
 #### Records editing window
 ![Records editing window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_records_window.png?raw=true)
 
+- - - -
 
 ### Setup
 1. Clone the project
