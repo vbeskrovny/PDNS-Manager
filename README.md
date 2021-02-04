@@ -18,11 +18,11 @@ Lightweight PowerDNS management frontend
 
 
 ### 2DO
-1. DDNS
-2. Cleanup
-3. PDNS_Helper -> prepare() -> array 
-4. Minify everything
-- [x] AAA
+- [ ] DDNS
+- [ ] Cleanup
+- [ ] PDNS_Helper -> prepare() -> array 
+- [ ] Minify everything
+
 
 
 ### High level logic overview
