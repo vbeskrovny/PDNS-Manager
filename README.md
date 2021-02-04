@@ -27,9 +27,13 @@ Lightweight PowerDNS management frontend
 1. Clone the project
 2. Configure the web server (NGINX snippet)
 ```
-location /pdns/api2 {                                                                                                                                                         
-    root /var/www/pdns.yourdns.com/pdns/api2;                                                                                                                                     
+location /pdns/api2 {
+    root /var/www/pdns.yourdns.com/pdns/api2;                                                                                                                         
     try_files $uri /pdns/api2/index.php$is_args$args;
+}
+
+location / {               
+    try_files $uri $uri/ =404;
 }
 ```
 3. Fetch dependencies using composer (check composer.json to see what is needed)
