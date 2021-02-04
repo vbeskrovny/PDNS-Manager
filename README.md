@@ -2,16 +2,25 @@
 Lightweight PowerDNS management frontend
 
 
+### Intention
+1. During my IT management responsibilities I found some time to contribute to our team of engineers and company overall.
+2. Tired of looking for a decent PowerDNS frontend manager -> let's create our own.
+3. Should be lightweight, dead simple and could be easily modified if needed.
+4. Some extra security on top (OTP)
+
+
 ### Disclaimer
 1. Use at your own risk
 2. No input data has been validated (apart from adding . (dot) at the end of zones/records), so be careful
 3. If unsure -> add https + basic auth in front of PDNS Manager directory
+4. Feel free to contribute, correct the bugs, add extra functionality
 
 
 ### 2DO
 1. DDNS
 2. Cleanup
 3. PDNS_Helper -> prepare() -> array 
+
 
 ### High level logic overview
 ![High level logic overview](https://raw.githubusercontent.com/vbeskrovny/PDNS-Manager/main/PDNS_Manager_HL_Overview.png)
@@ -25,7 +34,7 @@ Lightweight PowerDNS management frontend
 
 ### Setup
 1. Clone the project
-2. Configure the web server (NGINX snippet)
+2. Configure the web server (NGINX snippet) + enable PHP
 ```
 location /pdns/api2 {
     root /var/www/pdns.yourdns.com/pdns/api2;                                                                                                                         
