@@ -16,7 +16,12 @@ Lightweight PowerDNS management frontend
 ### High level logic overview
 ![High level logic overview](https://raw.githubusercontent.com/vbeskrovny/PDNS-Manager/main/PDNS_Manager_HL_Overview.png)
 
- 
+
+### Screenshots
+![Sign in window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_login_window.png?raw=true)
+![Sign up window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_signup_window.png?raw=true)
+![Records editing window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_records_window.png?raw=true)
+
 
 ### Setup
 1. Clone the project
