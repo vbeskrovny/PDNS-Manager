@@ -2,7 +2,7 @@
 Lightweight PowerDNS management frontend
 
 
-### Intention
+### Intention and prerequisites
 1. During my IT management responsibilities I found some time to contribute to our team of engineers and company overall.
 2. Tired of looking for a decent PowerDNS frontend manager -> let's create our own.
 3. Should be lightweight, dead simple and could be easily modified if needed.
