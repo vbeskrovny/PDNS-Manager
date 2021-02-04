@@ -29,8 +29,11 @@ Lightweight PowerDNS management frontend
 
 
 ### Screenshots
+#### Sign in window
 ![Sign in window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_login_window.png?raw=true)
+#### Sign up window
 ![Sign up window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_signup_window.png?raw=true)
+#### Records editing window
 ![Records editing window](https://github.com/vbeskrovny/PDNS-Manager/blob/main/PDNS_Manager_records_window.png?raw=true)
 
 
