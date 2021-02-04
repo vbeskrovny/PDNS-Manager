@@ -13,3 +13,11 @@ Lightweight PowerDNS management frontend
  
 
 #### Setup
+1. Clone the project
+2. Configure the web server
+```
+location /pdns/api2 {                                                                                                                                                         
+    root /var/www/pdns.yourdns.com/pdns/api2;                                                                                                                                     
+    try_files $uri /pdns/api2/index.php$is_args$args;
+}
+```
