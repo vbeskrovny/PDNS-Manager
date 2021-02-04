@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>PDNS Manager</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<!--Cookie.js-->
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+	
+	<!--Font Awesome-->
+	<link href="res/css/awesome/all.min.css" rel="stylesheet">
+	
+	
+	
+	<script src="res/js/stdlib.js"></script>
+	<script src="res/js/api.js"></script>
+	
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAIz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREBERAREQAREQEREBERABERAREQEREAEREBERAREQAREQEREBERAAAAAAAAAAAAAAAAAAAAAAAREQEREBERABERAREQEREAEREBERAREQAREQEREBERABERAREQEREAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAIQhAACEIQAAhCEAAIQhAACEIQAA//8AAP//AACEIQAAhCEAAIQhAACEIQAAhCEAAP//AAD//wAA" rel="icon" type="image/x-icon" />
+	
+	
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+		
+		.pdns-container, .auth-container, .signup-div {
+			display: none;
+		}
+		
+
+		.auth-form {
+		    width: 100%;
+		    max-width: 330px;
+		    padding: 15px;
+		    margin: auto;
+		}
+		
+		
+		.auth-form-username {
+    	margin-bottom: -1px;
+    	border-bottom-right-radius: 0;
+    	border-bottom-left-radius: 0;
+		}
+		
+		.auth-form-password {
+			margin-bottom: -1px;
+    	border-top-left-radius: 0;
+    	border-top-right-radius: 0;
+    	border-bottom-right-radius: 0;
+    	border-bottom-left-radius: 0;
+		}
+		
+		.auth-form-otp {
+    	margin-bottom: 10px;
+    	border-top-left-radius: 0;
+    	border-top-right-radius: 0;
+		}
+		
+	</style>
+	
+</head>
+
+<body>
+
+<div class="container pt-5 auth-container text-center">
+	<form class="auth-form" id="auth_form">
+		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+		<input type="text" class="form-control auth-form-username shadow-none" name="username" placeholder="Username@DNS" required autofocus autocomplete="off">
+		<input type="password" class="form-control auth-form-password shadow-none" name="password" placeholder="Password" required autocomplete="off">
+		<input type="text" class="form-control auth-form-otp shadow-none" name="otp" placeholder="OTP" required autocomplete="off">
+		
+		<div class="btn-group w-100">
+			<button class="btn btn-sm btn-outline-success btn-block mt-3" type="button" onClick="signup()">Sign up <i class="fas fa-user-plus"></i></button>
+			<button class="btn btn-sm btn-outline-success btn-block mt-3" type="button" onClick="do_auth()">Sign in <i class="fas fa-sign-in-alt"></i></button>
+		</div>
+		
+		
+		<div class="row signup-div pt-5 text-left">
+			
+			<div class="col-12 pb-3">
+				<label for="passwordHash">Password hash:</label>
+				<input type="text" class="form-control" id="passwordHash">
+			</div>
+
+			<div class="col-12 pb-3">
+				<label for="otpSecret">OTP secret:</label>
+				<input type="text" class="form-control" id="otpSecret">
+			</div>
+
+			<div class="col-12 pb-3">
+				<label for="otpURL">OTP URL:</label>
+				<input type="text" class="form-control" id="otpURL">
+			</div>
+
+			<div class="col-12 pb-3 text-center">
+				<img src="" id="otpIMG">
+			</div>
+			
+			
+		</div>
+		
+		
+	</form>
+</div>
+
+
+
+
+<div class="container pt-5 pdns-container">
+	
+	<form id="records_form">
+	
+		<div class="row no-gutters">
+			
+			<div class="col-9">
+				<div class="form-group">
+					<select class="form-control form-control-sm shadow-none w-100" id="zones" name="zone"></select>
+				</div>			
+			</div>
+			<div class="col-3 pl-1">
+				<div class="btn-group w-100">
+					<button type="button" class="btn btn-sm btn-outline-danger shadow-none pl-3 pr-3" onClick="remove_zone()"><i class="far fa-trash-alt"></i></button>
+					<button type="button" class="btn btn-sm btn-outline-danger shadow-none pl-3 pr-3" onClick="refresh_records()"><i class="fas fa-sync"></i></button>
+					<button type="button" class="btn btn-sm btn-outline-danger shadow-none pl-3 pr-3" onClick="save_records()"><i class="far fa-save"></i></button>
+					<button type="button" class="btn btn-sm btn-outline-danger shadow-none pl-3 pr-3" onClick="sign_out()"><i class="fas fa-sign-out-alt"></i></button>
+				</div>
+			</div>
+	
+			
+			<div class="col-12" id="records"></div>
+			
+				
+		</div>
+	
+	
+	</form>
+	
+</div>
+
+
+
+
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	
+	$.get('api2/check_auth', function(data) {
+		
+		if (data.auth_status) {
+			
+			update_cookie(data.auth_cookie);
+			
+			
+			globals_init();
+
+			
+			auth_loop();
+			
+
+			$('.pdns-container').show();
+			
+			
+			refresh_zones();
+			
+			
+		} else {
+			
+			remove_cookie();
+			$('.auth-container').show();
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+
+	
+	$('#zones').change(function(e) {
+		
+		var zone = $('#zones :selected').val();
+		
+		if (zone == '+1') {
+			
+			var new_zone = prompt('New zone name');
+			if (new_zone) {
+				
+				var params = GLOBALS['ZONE_DEFAULTS'];
+				params['zone'] = new_zone;
+
+				add_zone(params);
+
+			}
+
+			$('#records').empty();
+
+			
+			
+		} else if (zone != 0) {
+			get_records(zone);
+		} else {
+			$('#records').empty();
+		}
+	});
+		
+
+
+
+	
+	
+	
+
+	
+	
+	
+
+});	
+	
+	
+</script>
+
+</body>
+</html>
