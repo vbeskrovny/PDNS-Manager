@@ -14,7 +14,7 @@ Lightweight PowerDNS management frontend
 3. PDNS_Helper -> prepare() -> array 
 
 ### High level overview
-![Alt text](https://xxx.com/a.png)
+![Alt text](blob/main/PDNS_Manager_HL_Overview.png)
 
  
 
