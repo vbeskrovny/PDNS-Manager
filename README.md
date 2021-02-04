@@ -12,9 +12,13 @@ Lightweight PowerDNS management frontend
 1. DDNS
 2. Cleanup
 3. PDNS_Helper -> prepare() -> array 
+
+### High level overview
+![Alt text](Image URL)
+
  
 
-#### Setup
+### Setup
 1. Clone the project
 2. Configure the web server (NGINX snippet)
 ```
