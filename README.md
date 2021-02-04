@@ -6,8 +6,10 @@ Lightweight PowerDNS management frontend
 1. During my IT management responsibilities I found some time to contribute to our team of engineers and company overall.
 2. Tired of looking for a decent PowerDNS frontend manager -> let's create our own.
 3. Should be lightweight, dead simple and could be easily modified if needed.
-4. No need for the 3rd party tools (MySQL, PostgreSQL, e.t.c. databases) -> direct communication with the PowerDNS using API
-5. Some extra security on top (OTP)
+4. No need for the 3rd party storage databases (MySQL, PostgreSQL, e.t.c. databases), complex frameworks -> direct communication with the PowerDNS using API
+5. Use PHP, HTML and JavaScript only
+6. Some extra security on top (OTP)
+
 
 - - - -
 
