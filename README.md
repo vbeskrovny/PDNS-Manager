@@ -21,6 +21,7 @@ Lightweight PowerDNS management frontend
 1. DDNS
 2. Cleanup
 3. PDNS_Helper -> prepare() -> array 
+4. Minify everything
 
 
 ### High level logic overview
