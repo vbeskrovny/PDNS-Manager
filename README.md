@@ -26,6 +26,8 @@ Lightweight PowerDNS management frontend
 - [ ] Cleanup
 - [ ] PDNS_Helper -> prepare() -> array 
 - [ ] Minify everything
+- [ ] Possibility to edit settings from the GUI (???)
+- [ ] Possibility to edit credentials from the GUI (???)
 
 - - - -
 
@@ -65,5 +67,5 @@ location / {
 ```
 3. Fetch dependencies using composer (check composer.json to see what is needed)
 4. Navigate to https://pdns.yourdns.com -> you should see the login prompt and be able to "sign up"
-5. Save the received credentials to the '-sample.php' files and rename them by removing '-sample'
+5. Save the received credentials to the '-sample.php' files and rename the files (credentials-sample.php and settings-sample.php) by removing '-sample'
 6. Enjoy...
