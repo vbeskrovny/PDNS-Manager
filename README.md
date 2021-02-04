@@ -13,8 +13,8 @@ Lightweight PowerDNS management frontend
 2. Cleanup
 3. PDNS_Helper -> prepare() -> array 
 
-### High level overview
-![Alt text](blob/main/PDNS_Manager_HL_Overview.png)
+### High level logic overview
+![High level logic overview](https://raw.githubusercontent.com/vbeskrovny/PDNS-Manager/main/PDNS_Manager_HL_Overview.png)
 
  
 
