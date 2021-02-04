@@ -1,7 +1,6 @@
 # PDNS-Manager
 Lightweight PowerDNS management frontend
 
-- - - -
 
 ### Intention and prerequisites
 1. During my IT management responsibilities I found some time to contribute to our team of engineers and company overall.
