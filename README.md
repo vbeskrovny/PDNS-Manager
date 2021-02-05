@@ -10,6 +10,14 @@ Lightweight PowerDNS management frontend
 5. Use PHP, HTML and JavaScript (jQuery) only
 6. Some extra security on top (OTP)
 
+- - - -
+
+
+### Requirements
+1. PowerDNS
+2. Web server
+3. PHP
+
 
 - - - -
 
