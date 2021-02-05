@@ -13,6 +13,15 @@ Lightweight PowerDNS management frontend
 - - - -
 
 
+### What works
+1. Adding and removing zones
+2. Modifying records
+3. Adding records (A, TXT, CNAME)
+
+
+- - - -
+
+
 ### Requirements
 1. PowerDNS
 2. Web server
