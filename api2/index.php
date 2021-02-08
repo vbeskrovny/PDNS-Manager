@@ -119,11 +119,15 @@ $app->get('/ddns[/{get_params:.*}]', function (Request $request, Response $respo
 	
 	global $PDNS, $AUTH;
 	
-	$valid_params = array('zone' => null, 'type' => 'A', 'name' => null, 'content' => null, 'ttl' => 60);
+	$status = '+OK';
+	$all_valid = true;	## We are optimistic and think that everything is good by default :)))
+	$valid_params = array('token' => null, 'zone' => null, 'type' => 'A', 'name' => null, 'content' => null, 'ttl' => 60);
 	
 	
 	$get_params = explode('/', $args['get_params']);
 	
+	
+	## Assign URL params to the internal (valid_params) parameters array
 	foreach ($get_params as $kv_pair) {
 		if (preg_match('/^(.+)=(.+)$/', $kv_pair, $kv_ary)) {
 			
@@ -143,7 +147,6 @@ $app->get('/ddns[/{get_params:.*}]', function (Request $request, Response $respo
 				}
 				
 
-			
 				$valid_params[$key] = $val;
 			
 			}
@@ -153,15 +156,42 @@ $app->get('/ddns[/{get_params:.*}]', function (Request $request, Response $respo
 	
 	
 	
+	## Validate params
+	foreach ($valid_params as $key => $val) {
+		if ($val == null) {
+			if ($key == 'zone') {
+				if ($valid_params['name'] != null) {
+					$valid_params['zone'] = explode((explode('.', $valid_params['name'])[0]).'.', $valid_params['name'], 2)[1];
+				}
+			} else {
+				$all_valid = false;
+			}
+		}
+	}
 	
 	
+	if ($all_valid && array_key_exists($valid_params['token'], DDNS_TOKENS)) {
+		
+		$params = array(
+			'zone' => $valid_params['zone'],
+			'type' => array($valid_params['type']),
+			'name' => array($valid_params['name']),
+			'content' => array($valid_params['content']),
+			'ttl' => array($valid_params['ttl'])
+		);
+		
+		$PDNS->save_records($params);
+		
+		
+	} else {
+		$status = '-ERR';
+	}
 	
 	
-	
-	$payload = json_encode($valid_params);
 
-	$response->getBody()->write($payload);
-	return $response->withHeader('Content-Type', 'application/json');	
+	$response->getBody()->write($status);
+	return $response->withHeader('Content-Type', 'text/plain');
+
 	
 });
 

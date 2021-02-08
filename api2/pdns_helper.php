@@ -41,9 +41,7 @@ class PDNS_Helper {
 	
 	
 	function save_records($params) {
-		
-		// print_r($params);
-		
+
 		$zone = $this->prepare($params['zone']);
 		
 		$change_ary = array();
@@ -55,20 +53,20 @@ class PDNS_Helper {
 			
 			$key = md5($name . ':' . $type);
 			
-			$change_array[$key]['changetype'] = 'REPLACE';
-			$change_array[$key]['name'] = $this->prepare($name);
-			$change_array[$key]['type'] = $type;
-			$change_array[$key]['ttl'] = $params['ttl'][$idx];
-			$change_array[$key]['records'][] = [ 'content' => urldecode($params['content'][$idx]), 'disabled' => false ];
+			$change_ary[$key]['changetype'] = 'REPLACE';
+			$change_ary[$key]['name'] = $this->prepare($name);
+			$change_ary[$key]['type'] = $type;
+			$change_ary[$key]['ttl'] = $params['ttl'][$idx];
+			$change_ary[$key]['records'][] = [ 'content' => urldecode($params['content'][$idx]), 'disabled' => false ];
 
 		}
 		
-
+		
 		// UPDATE
 		$res = $this->client->request('PATCH', 'servers/localhost/zones/' . $zone, [
 			'debug' => false, 
 			'headers' => ['X-API-Key' => API_KEY],
-			'json' => ['rrsets' => array_values($change_array)]
+			'json' => ['rrsets' => array_values($change_ary)]
 		]);
 		
 		

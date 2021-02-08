@@ -39,7 +39,9 @@ Lightweight PowerDNS management frontend
 - - - -
 
 ### 2DO
-- [ ] DDNS
+- [x] DDNS
+- [ ] Validate content depnding on the record type
+- [ ] Pass status codes from PowerDNS API back to application API
 - [ ] Cleanup
 - [ ] PDNS_Helper -> prepare() -> array 
 - [ ] Minify everything

@@ -169,7 +169,7 @@ function save_records() {
 		
 		
 		if (all_valid) {
-
+			
 			$.post('api2/save_records', form_data, function(data) {
 
 				get_records(zone);	
