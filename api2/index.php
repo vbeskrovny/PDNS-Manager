@@ -113,81 +113,40 @@ $app->post('/do_auth', function (Request $request, Response $response) {
 
 
 
+## DDNS via POST
+$app->post('/ddns', function (Request $request, Response $response) {
+	
+	global $PDNS, $AUTH;
+	
+	$params = $request->getParsedBody();
+	$status = $PDNS->do_ddns($params);
 
 
+	$response->getBody()->write($status);
+	return $response->withHeader('Content-Type', 'text/plain');
+
+});
+
+
+## DDNS via GET
 $app->get('/ddns[/{get_params:.*}]', function (Request $request, Response $response, $args) {
 	
 	global $PDNS, $AUTH;
 	
-	$status = '+OK';
-	$all_valid = true;	## We are optimistic and think that everything is good by default :)))
-	$valid_params = array('token' => null, 'zone' => null, 'type' => 'A', 'name' => null, 'content' => null, 'ttl' => 60);
-	
-	
+	$params = array();
 	$get_params = explode('/', $args['get_params']);
 	
-	
-	## Assign URL params to the internal (valid_params) parameters array
+
 	foreach ($get_params as $kv_pair) {
 		if (preg_match('/^(.+)=(.+)$/', $kv_pair, $kv_ary)) {
-			
 			$key = $kv_ary[1];
 			$val = $kv_ary[2];
-			
-			if (array_key_exists($key, $valid_params)) {
-				
-				switch ($key) {
-					case 'zone':
-					case 'name':
-						$val = $PDNS->prepare($val);
-					break;
-					case 'type':
-						$val = strtoupper($val);
-					break;
-				}
-				
+			$params[$key] = $val;
+		}
+	}
+	
 
-				$valid_params[$key] = $val;
-			
-			}
-		
-		}
-	}
-	
-	
-	
-	## Validate params
-	foreach ($valid_params as $key => $val) {
-		if ($val == null) {
-			if ($key == 'zone') {
-				if ($valid_params['name'] != null) {
-					$valid_params['zone'] = explode((explode('.', $valid_params['name'])[0]).'.', $valid_params['name'], 2)[1];
-				}
-			} else {
-				$all_valid = false;
-			}
-		}
-	}
-	
-	
-	if ($all_valid && array_key_exists($valid_params['token'], DDNS_TOKENS)) {
-		
-		$params = array(
-			'zone' => $valid_params['zone'],
-			'type' => array($valid_params['type']),
-			'name' => array($valid_params['name']),
-			'content' => array($valid_params['content']),
-			'ttl' => array($valid_params['ttl'])
-		);
-		
-		$PDNS->save_records($params);
-		
-		
-	} else {
-		$status = '-ERR';
-	}
-	
-	
+	$status = $PDNS->do_ddns($params);
 
 	$response->getBody()->write($status);
 	return $response->withHeader('Content-Type', 'text/plain');
@@ -223,6 +182,32 @@ $app->post('/globals_init', function (Request $request, Response $response) {
 
 
 
+$app->post('/remove_record', function (Request $request, Response $response) {
+	
+	global $PDNS, $AUTH;
+	
+	if ($AUTH->check_auth($request)['auth_status'] === true) {
+	
+		$params = $request->getParsedBody();
+		
+		$PDNS->remove_record($params['zone'], $params['type'], $params['name']);
+
+		
+		$payload = json_encode(['default' => true]);
+	
+	} else {
+		
+		$payload = json_encode(['auth_status' => false]);
+		
+	}
+	
+	
+	$response->getBody()->write($payload);
+	return $response->withHeader('Content-Type', 'application/json');	
+	
+	
+});
+
 
 
 $app->post('/save_records', function (Request $request, Response $response) {
@@ -232,7 +217,7 @@ $app->post('/save_records', function (Request $request, Response $response) {
 	if ($AUTH->check_auth($request)['auth_status'] === true) {
 	
 		$params = $request->getParsedBody();
-	
+		
 		$PDNS->save_records($params);
 
 		

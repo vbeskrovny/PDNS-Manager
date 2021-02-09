@@ -171,9 +171,7 @@ function save_records() {
 		if (all_valid) {
 			
 			$.post('api2/save_records', form_data, function(data) {
-
 				get_records(zone);	
-
 			});
 			
 		}
@@ -182,6 +180,18 @@ function save_records() {
 	}
 
 }
+
+
+function remove_record(zone, type, name) {
+	
+	if (confirm('Proceed with the "' + type + '" type for "' + name + '" record removal?')) {
+		$.post('api2/remove_record', { zone: zone, type: type, name: name }, function(data) {
+			get_records(zone);
+		});
+	}
+
+}
+
 
 
 function remove_row(row_id) {
@@ -256,7 +266,7 @@ function get_records(zone) {
 					<div class="col-2"><input class="form-control form-control-sm record-data" type="text" name="name[]" value="${name}"></div>
 					<div class="col-7"><input class="form-control form-control-sm record-data" type="text" name="content[]" value="${content}"></div>
 					<div class="col-1"><input class="form-control form-control-sm record-data" type="text" name="ttl[]" value="${ttl}"></div>
-					<div class="col-1"><button type="button" class="btn btn-sm btn-outline-danger shadow-none pl-3 pr-3 btn-block" onClick="remove_row(${row_id})"><i class="far fa-trash-alt"></i></button></div>
+					<div class="col-1"><button type="button" class="btn btn-sm btn-outline-danger shadow-none pl-3 pr-3 btn-block" onClick="remove_record('${zone}', '${type}', '${name}')"><i class="far fa-trash-alt"></i></button></div>
 				</div>`;
 				
 				$('#records').append(record_tpl);
