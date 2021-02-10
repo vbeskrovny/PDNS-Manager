@@ -45,6 +45,8 @@ Lightweight PowerDNS management frontend
 - [x] DDNS (via POST)
 - [ ] DDNS get IP from source request
 - [ ] Validate TXT record to have surrounding quotes
+- [ ] Implement TOKEN -> ZONE / RECORD policy
+- [ ] Implement USER -> ZONE / RECORD policy
 - [ ] Validate content depnding on the record type
 - [ ] Pass status codes from PowerDNS API back to application API
 - [ ] Cleanup
