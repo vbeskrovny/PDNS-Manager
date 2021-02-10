@@ -119,6 +119,8 @@ $app->post('/ddns', function (Request $request, Response $response) {
 	global $PDNS, $AUTH;
 	
 	$params = $request->getParsedBody();
+
+
 	$status = $PDNS->do_ddns($params);
 
 
@@ -145,6 +147,7 @@ $app->get('/ddns[/{get_params:.*}]', function (Request $request, Response $respo
 		}
 	}
 	
+
 
 	$status = $PDNS->do_ddns($params);
 

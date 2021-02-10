@@ -85,7 +85,9 @@ class PDNS_Helper {
 		}
 		
 		
+		
 		if ($all_valid && array_key_exists($valid_params['token'], DDNS_TOKENS)) {
+			
 			
 
 			$params = array(
@@ -108,7 +110,7 @@ class PDNS_Helper {
 			}
 
 
-
+			
 			
 			// If we have to keep the existing records -> append the existing records (do not forget to apply filters) + do not use any 'content' fitlers
 			if ($valid_params['keep']) {
@@ -139,8 +141,9 @@ class PDNS_Helper {
 			}
 
 
-			$this->save_records($params);
 
+			$this->save_records($params);
+			
 
 		} else {
 			$status = '-ERR';
@@ -215,7 +218,7 @@ class PDNS_Helper {
 
 		}
 		
-
+		
 		// UPDATE
 		$res = $this->client->request('PATCH', 'servers/localhost/zones/' . $zone, [
 			'debug' => false, 
