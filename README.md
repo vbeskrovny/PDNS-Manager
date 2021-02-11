@@ -16,8 +16,8 @@ Lightweight PowerDNS management frontend
 ### What works
 1. Adding and removing zones
 2. Modifying records
-3. Adding records (A, TXT, CNAME)
-4. DDNS minimal usage:
+3. Adding records (A, TXT, CNAME, MX)
+4. DDNS minimal usage (check Wiki as well):
 	* Add: https://pdns.yourdns.com/pdns/ddns/token=aabbcc/name=myhost.example.com[/content=1.2.3.4[/keep=1|0]
 	* Remove: https://pdns.yourdns.com/pdns/ddns/token=aabbcc/name=myhost.example.com/content=null
 

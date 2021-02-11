@@ -309,6 +309,8 @@ function set_type(row_id, type, zone) {
 			content_attr = '127.1.2.3';
 		} else if (type == 'CNAME') {
 			content_attr = 'domain01.' + zone;
+		} else if (type == 'MX') {
+			content_attr = '10 ' + zone;
 		}
 
 	}
@@ -334,6 +336,7 @@ function add_record(zone) {
 				<option value="A">A</option>
 				<option value="CNAME">CNAME</option>
 				<option value="TXT">TXT</option>
+				<option value="MX">MX</option>
 			</select>
 			<input class="record-data" type="hidden" name="type[]" value="" id="type_field_${row_id}">
 		</div>
