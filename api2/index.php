@@ -148,7 +148,6 @@ $app->get('/ddns[/{get_params:.*}]', function (Request $request, Response $respo
 	}
 	
 
-
 	$status = $PDNS->do_ddns($params);
 
 	$response->getBody()->write($status);

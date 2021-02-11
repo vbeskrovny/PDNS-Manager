@@ -47,7 +47,6 @@ class PDNS_Helper {
 		$all_valid = true;	## We are optimistic and think that everything is good by default :)))
 		$valid_params = array('keep' => 0, 'token' => null, 'zone' => null, 'type' => 'A', 'name' => null, 'content' => null, 'ttl' => 60);
 		
-		
 
 		## Assign URL params to the internal (valid_params) parameters array
 		foreach ($params as $key => $val) {
@@ -78,14 +77,19 @@ class PDNS_Helper {
 					if ($valid_params['name'] !== null) {
 						$valid_params['zone'] = explode((explode('.', $valid_params['name'])[0]).'.', $valid_params['name'], 2)[1];
 					}
+				} elseif ($key == 'content') {
+					if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
+						$valid_params['content'] = $_SERVER['REMOTE_ADDR'];
+					} else {
+						$all_valid = false;
+					}
 				} else {
 					$all_valid = false;
 				}
 			}
 		}
 		
-		
-		
+
 		if ($all_valid && array_key_exists($valid_params['token'], DDNS_TOKENS)) {
 			
 			

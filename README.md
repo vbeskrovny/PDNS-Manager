@@ -18,7 +18,7 @@ Lightweight PowerDNS management frontend
 2. Modifying records
 3. Adding records (A, TXT, CNAME)
 4. DDNS minimal usage:
-	* Add: https://pdns.yourdns.com/pdns/ddns/token=aabbcc/name=myhost.example.com/content=1.2.3.4[/keep=1|0]
+	* Add: https://pdns.yourdns.com/pdns/ddns/token=aabbcc/name=myhost.example.com[/content=1.2.3.4[/keep=1|0]
 	* Remove: https://pdns.yourdns.com/pdns/ddns/token=aabbcc/name=myhost.example.com/content=null
 
 - - - -
@@ -43,7 +43,7 @@ Lightweight PowerDNS management frontend
 ### 2DO
 - [x] DDNS (via GET)
 - [x] DDNS (via POST)
-- [ ] DDNS get IP from source request
+- [x] DDNS get IP from source request by default
 - [ ] Validate TXT record to have surrounding quotes
 - [ ] Implement TOKEN -> ZONE / RECORD policy
 - [ ] Implement USER -> ZONE / RECORD policy
