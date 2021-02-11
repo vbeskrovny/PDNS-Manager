@@ -92,13 +92,11 @@ function auth_loop() {
 			if (data.auth_status) {
 				
 				update_cookie(data.auth_cookie);
-				
-				
+
 			} else {
 				
-				remove_cookie();
+				sign_out();
 
-				
 			}
 			
 			auth_loop();

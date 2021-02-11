@@ -44,6 +44,7 @@ Lightweight PowerDNS management frontend
 - [x] DDNS (via GET)
 - [x] DDNS (via POST)
 - [x] DDNS get IP from source request by default
+- [ ] Protect credentials/token against bruteforcing
 - [ ] Validate TXT record to have surrounding quotes
 - [ ] Implement TOKEN -> ZONE / RECORD policy
 - [ ] Implement USER -> ZONE / RECORD policy
