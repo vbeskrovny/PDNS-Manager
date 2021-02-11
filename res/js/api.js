@@ -169,7 +169,8 @@ function save_records() {
 		if (all_valid) {
 			
 			$.post('api2/save_records', form_data, function(data) {
-				get_records(zone);	
+				get_records(zone);
+				toastr.success('Records has been saved!');
 			});
 			
 		}
@@ -217,6 +218,9 @@ function refresh_records() {
 		get_records(zone);
 	}
 	refresh_zones(zone);
+	
+	toastr.info('Records has been re-loaded...');
+	
 }
 
 
@@ -231,6 +235,7 @@ function add_zone(params) {
 	$.post('api2/add_zone', params, function (data) {
 		clear_records();
 		refresh_zones();
+		toastr.success('The new zone [' + params['zone'] + '] has been created!');
 	});
 }
 
