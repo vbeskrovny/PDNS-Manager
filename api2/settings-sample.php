@@ -1,8 +1,14 @@
 <?php
 
 
-## empty or URL where the main API index.php app is located. If full url is: 'https://example.com/pdns/api' , then URL_PREFIX is '/pdns/api2'
-define('URL_PREFIX', '/pdns/api2');							
+## empty or URL where the main API index.php app is located. If full url is: 'https://example.com/pdns/api' , then URL_PREFIX is '/pdns/api'
+define('URL_PREFIX', '/api2');							
+
+
+## Authentication bruteforce protection. Requires: memcached (server + php module)
+define('MEMCACHED_KEY_PREFIX', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-');
+define('LOGIN_MAX_TRIES', 3);
+define('LOGIN_BLOCK_TIME', 300);
 
 
 ## periodical checks (in seconds)
@@ -13,12 +19,12 @@ define('AUTH_INTERVAL', 300);
 define('AUTH_LIFE', 900);																
 
 
-## AUTH_Helper()->generate_key();
+## echo AUTH_Helper()->generate_key();
 define('AUTH_KEY', '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000');
 
 
 ## PDNS Api key
-define('API_KEY', '00000000000000000000000000000000');	
+define('API_KEY', '00000000000000000000000000000000');
 
 
 define('ZONE_DEFAULTS', [
