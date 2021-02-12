@@ -48,6 +48,7 @@ Lightweight PowerDNS management frontend
 - [ ] Validate TXT record to have surrounding quotes
 - [ ] Implement TOKEN -> ZONE / RECORD policy
 - [ ] Implement USER -> ZONE / RECORD policy
+- [ ] Multi-user support (credentials, zones, records)
 - [ ] Validate content depnding on the record type
 - [ ] Pass status codes from PowerDNS API back to application API
 - [ ] Cleanup
