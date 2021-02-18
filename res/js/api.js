@@ -301,6 +301,7 @@ function get_records(zone) {
 function set_type(row_id, type, zone) {
 	
 	var type_val = '';
+	var name_attr = zone;
 	var content_attr = '';
 	
 	
@@ -316,12 +317,16 @@ function set_type(row_id, type, zone) {
 			content_attr = 'domain01.' + zone;
 		} else if (type == 'MX') {
 			content_attr = '10 ' + zone;
+		} else if (type == 'SRV') {
+			name_attr = '_sip._udp.sip.' + zone;
+			content_attr = 'prio[10] weight[1] port[5060] sip.' + zone;
 		}
 
 	}
 
 	
 	$('#type_field_' + row_id).val(type_val);
+	$('#name_field_' + row_id).attr('placeholder', name_attr);
 	$('#content_field_' + row_id).attr('placeholder', content_attr);
 	
 	
@@ -342,6 +347,7 @@ function add_record(zone) {
 				<option value="CNAME">CNAME</option>
 				<option value="TXT">TXT</option>
 				<option value="MX">MX</option>
+				<option value="SRV">SRV</option>
 			</select>
 			<input class="record-data" type="hidden" name="type[]" value="" id="type_field_${row_id}">
 		</div>
