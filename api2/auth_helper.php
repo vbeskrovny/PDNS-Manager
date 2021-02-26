@@ -104,8 +104,16 @@ class AUTH_Helper {
 	
 	
 	function is_totp_ok($username, $otp) {
-		$totp = new \OTPHP\TOTP(null, AUTH_HASH[$username]['secret']);
-		return $totp->verify($otp);
+		if (array_key_exists('secret', AUTH_HASH[$username])) {
+			if (AUTH_HASH[$username]['secret'] === null) {
+				return true;
+			} else {
+				$totp = new \OTPHP\TOTP(null, AUTH_HASH[$username]['secret']);
+				return $totp->verify($otp);
+			}
+		} else {
+			return true;
+		}
 	}
 	
 	
