@@ -11,6 +11,10 @@ define('LOGIN_MAX_TRIES', 3);
 define('LOGIN_BLOCK_TIME', 300);
 
 
+## OTP enabled/disabled
+define('OTP_ENABLED', true);
+
+
 ## periodical checks (in seconds)
 define('AUTH_INTERVAL', 300);														
 

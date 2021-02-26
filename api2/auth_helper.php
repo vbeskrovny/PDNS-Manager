@@ -104,12 +104,20 @@ class AUTH_Helper {
 	
 	
 	function is_totp_ok($username, $otp) {
-		if (array_key_exists('secret', AUTH_HASH[$username])) {
-			if (AUTH_HASH[$username]['secret'] === null) {
-				return true;
+		if (OTP_ENABLED) {
+			if (array_key_exists('secret', AUTH_HASH[$username])) {
+				if (AUTH_HASH[$username]['secret'] === null) {
+					return true;
+				} else {
+					if (class_exists('OTPHP\TOTP')) {
+						$totp = new \OTPHP\TOTP(null, AUTH_HASH[$username]['secret']);
+						return $totp->verify($otp);
+					} else {
+						return false;
+					}
+				}
 			} else {
-				$totp = new \OTPHP\TOTP(null, AUTH_HASH[$username]['secret']);
-				return $totp->verify($otp);
+				return true;
 			}
 		} else {
 			return true;
@@ -119,7 +127,7 @@ class AUTH_Helper {
 	
 	function signup($username) {
 		
-		if (class_exists('OTPHP\TOTP')) {
+		if (OTP_ENABLED === true && class_exists('OTPHP\TOTP')) {
 		
 			$totp = new \OTPHP\TOTP();
 			
@@ -136,7 +144,7 @@ class AUTH_Helper {
 		
 		} else {
 			
-			return [ 'TOTP not installed', 'TOTP not installed', null ];
+			return [ 'TOTP disabled and/or not installed', 'TOTP disabled and/or not installed', null ];
 			
 		}
 		
