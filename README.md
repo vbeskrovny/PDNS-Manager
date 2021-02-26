@@ -44,7 +44,7 @@ Lightweight PowerDNS management frontend
 - [x] DDNS (via GET)
 - [x] DDNS (via POST)
 - [x] DDNS get IP from source request by default
-- [x] OTP can be turned off by setting secret to 'null' value: e.g. 'user' => array('password' => 'hash', 'secret' => null)
+- [x] OTP can be turned off by setting secret to 'null' value: e.g. 'user' => array('password' => 'hash', 'secret' => null); and enabled/disabled via settings
 - [ ] Protect credentials/token against bruteforcing
 - [ ] Validate TXT record to have surrounding quotes
 - [ ] Implement TOKEN -> ZONE / RECORD policy
