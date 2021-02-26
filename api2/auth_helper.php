@@ -119,18 +119,26 @@ class AUTH_Helper {
 	
 	function signup($username) {
 		
-		$totp = new \OTPHP\TOTP();
+		if (class_exists('OTPHP\TOTP')) {
 		
-		$otp_secret = $totp->getSecret();
-		$totp = new \OTPHP\TOTP($username, $otp_secret);
-		$otp_url = $totp->getProvisioningUri();
-
+			$totp = new \OTPHP\TOTP();
+			
+			$otp_secret = $totp->getSecret();
+			$totp = new \OTPHP\TOTP($username, $otp_secret);
+			$otp_url = $totp->getProvisioningUri();
+	
+			
+			$qrCode = new QrCode($otp_url);
+			$otp_qr = $qrCode->writeDataUri();
+	
+	
+			return [ $otp_secret, $otp_url, $otp_qr ];
 		
-		$qrCode = new QrCode($otp_url);
-		$otp_qr = $qrCode->writeDataUri();
-
-
-		return [ $otp_secret, $otp_url, $otp_qr ];
+		} else {
+			
+			return [ 'TOTP not installed', 'TOTP not installed', null ];
+			
+		}
 		
 	}
 
