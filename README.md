@@ -50,7 +50,7 @@ Lightweight PowerDNS management frontend
 - [ ] Implement TOKEN -> ZONE / RECORD policy
 - [ ] Implement USER -> ZONE / RECORD policy
 - [ ] Multi-user support (credentials, zones, records)
-- [ ] Validate content depnding on the record type
+- [ ] Validate content depending on the record type
 - [ ] Pass status codes from PowerDNS API back to application API
 - [ ] Cleanup
 - [ ] PDNS_Helper -> prepare() -> array 

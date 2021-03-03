@@ -7,6 +7,14 @@ use Defuse\Crypto\Key;
 
 
 
+if(empty($_SERVER['REMOTE_ADDR']) and !isset($_SERVER['HTTP_USER_AGENT']) and count($_SERVER['argv']) > 0) {
+	require __DIR__ . '/../vendor/autoload.php';
+	printf("\nNew AUTH_KEY: %s\n\n", Key::createNewRandomKey()->saveToAsciiSafeString());
+	exit;
+}
+
+
+
 class AUTH_Helper {
 	
 	private $key;
