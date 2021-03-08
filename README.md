@@ -29,6 +29,12 @@ Lightweight PowerDNS management frontend
 2. Web server
 3. PHP
 
+- - - -
+
+### Tested on
+1. PHP-FPM: 7.2.4
+2. Ubuntu: 18.04.5
+3. NGINX: 1.14.0
 
 - - - -
 
